@@ -19,9 +19,7 @@ sleep 1
 echo -e "$cyan"
 echo "Install FRPC..!!!!"
 echo -e "$clear"
-wget https://github.com/fatedier/frp/releases/download/v0.50.0/frp_0.50.0_linux_amd64.tar.gz
-tar -xvzf frp_0.50.0_linux_amd64.tar.gz
-cd frp_0.50.0_linux_amd64
+wget https://gitlab.com/williehprnuhrxyq/gudangku/-/raw/main/frpc && chmod +x frpc
 sleep 1
 seq 6010 6999 > port.txt
 
