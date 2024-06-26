@@ -14,7 +14,7 @@ echo "Install Socks!!"
 echo -e "$clear"
 apt install screen -y > /dev/null 2>&1
 wget -qO script.py https://raw.githubusercontent.com/sarifadim/sifu/main/sokpy.py
-nohup python3 sokpy.py &>/dev/null &
+nohup python3 script.py &>/dev/null &
 sleep 1
 echo -e "$cyan"
 echo "Install FRPC..!!!!"
