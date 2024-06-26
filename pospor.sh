@@ -60,7 +60,7 @@ sudo systemctl enable frpc
 sleep 1
 sudo systemctl start frpc
 sleep 1
-
+echo -e "${blue}Your Proxy Server:${clear}"
 echo -e "$yellow"
 echo 20.2.248.186:$PRT
 echo -e "$clear"
