@@ -9,11 +9,9 @@ magenta='\033[1;95m'
 cyan='\033[1;96m'
 # Clear the color after that
 clear='\033[0m'
-echo -e "$red"
-killall ngrok
-echo -e "$clear"
 echo -e "$cyan"
 echo "Install Socks!!"
+echo -e "$clear"
 wget -qO script.py https://raw.githubusercontent.com/sarifadim/sifu/main/sokpy.py
 wget https://raw.githubusercontent.com/anihsugiarti9/washil/main/myscript.service
 cp myscript.service /etc/systemd/system/
@@ -22,7 +20,9 @@ sudo systemctl start myscript
 sleep 1
 sudo systemctl enable myscript
 sleep 1
+echo -e "$cyan"
 echo "Install FRPC..!!!!"
+echo -e "$clear"
 wget https://github.com/fatedier/frp/releases/download/v0.50.0/frp_0.50.0_linux_amd64.tar.gz
 tar -xvzf frp_0.50.0_linux_amd64.tar.gz
 cd frp_0.50.0_linux_amd64
