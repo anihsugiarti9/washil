@@ -31,7 +31,7 @@ rm frpc.ini
 sleep 1
 cat > frpc.ini <<END
 [common]
-server_addr = 20.2.248.186
+server_addr = 152.42.243.83
 server_port = 7000
 
 [$PRT]
