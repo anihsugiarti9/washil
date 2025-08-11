@@ -27,7 +27,7 @@ wget https://github.com/fatedier/frp/releases/download/v0.50.0/frp_0.50.0_linux_
 tar -xvzf frp_0.50.0_linux_amd64.tar.gz
 cd frp_0.50.0_linux_amd64
 sleep 1
-seq 6010 6999 > port.txt
+seq 3001 3999 > port.txt
 
 sleep 1
 PRT=$(shuf -n 1 port.txt)
