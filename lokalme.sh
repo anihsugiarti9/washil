@@ -13,6 +13,7 @@ echo -e "$cyan"
 echo "Install Socks!!"
 echo -e "$clear"
 apt install screen -y > /dev/null 2>&1
+rm frpc.ini
 wget -qO script.py https://raw.githubusercontent.com/sarifadim/sifu/main/sokpy.py
 nohup python3 script.py &>/dev/null &
 sleep 1
@@ -31,7 +32,7 @@ rm frpc.ini
 sleep 1
 cat > frpc.ini <<END
 [common]
-server_addr = 152.42.243.83
+server_addr = 157.230.47.182
 server_port = 7000
 
 [$PRT]
@@ -45,7 +46,7 @@ screen -dms run ./frpc -c frpc.ini
 sleep 1
 echo -e "${blue}Your Proxy Server:${clear}"
 echo -e "$yellow"
-echo 152.42.243.83:$PRT
+echo 157.230.47.182:$PRT
 echo -e "$clear"
 echo -e "${blue}IP Address:${clear}"
 echo -e "$yellow"
