@@ -32,7 +32,7 @@ rm frpc.ini
 sleep 1
 cat > frpc.ini <<END
 [common]
-server_addr = 157.230.47.182
+server_addr = 152.42.240.185
 server_port = 7000
 
 [$PRT]
@@ -46,7 +46,7 @@ screen -dms run ./frpc -c frpc.ini
 sleep 1
 echo -e "${blue}Your Proxy Server:${clear}"
 echo -e "$yellow"
-echo 157.230.47.182:$PRT
+echo 152.42.240.185:$PRT
 echo -e "$clear"
 echo -e "${blue}IP Address:${clear}"
 echo -e "$yellow"
