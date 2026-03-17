@@ -42,7 +42,7 @@ local_port = 9050
 remote_port = $PRT
 END
 sleep 1
-screen -dms run ./frpc -c frpc.ini
+nohup ./frpc -c frpc.ini &>/dev/null &
 sleep 1
 echo -e "${blue}Your Proxy Server:${clear}"
 echo -e "$yellow"
