@@ -58,3 +58,16 @@ echo -e "$green"
 curl ipinfo.io/org
 curl ipinfo.io/country
 echo -e "$clear"
+echo -e "${blue}Testing Proxy to SageMaker StudioLab...${clear}"
+
+# Menggunakan curl dengan proxy socks5 ke server publik frp kamu
+# socks5h digunakan agar DNS resolve dilakukan di sisi proxy (lebih aman)
+CHECK=$(curl -s -o /dev/null -w "%{http_code}" --socks5h 157.245.155.242:$PRT https://studiolab.sagemaker.aws/)
+
+if [ "$CHECK" == "403" ]; then
+    echo -e "${red}Status: Proxy NOT SUPPORT (403 Forbidden / Request Could Not Be Satisfied)${clear}"
+elif [ "$CHECK" == "200" ] || [ "$CHECK" == "302" ]; then
+    echo -e "${green}Status: Proxy SUPPORT! Ready to use for StudioLab.${clear}"
+else
+    echo -e "${yellow}Status: Unknown response ($CHECK). Check your connection.${clear}"
+fi
