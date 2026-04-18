@@ -49,7 +49,7 @@ sleep 1
 nohup ./frpc -c frpc.ini &>/dev/null &
 
 # Memberikan waktu tunggu ekstra agar tunnel FRP benar-benar terhubung ke server publik
-sleep 3 
+sleep 1 
 
 echo -e "${blue}Your Proxy Server:${clear}"
 echo -e "$yellow"
