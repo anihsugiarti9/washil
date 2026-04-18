@@ -69,30 +69,4 @@ curl -s ipinfo.io/country
 echo -e "$clear"
 echo
 
-# ==========================================
-# BAGIAN PENGECEKAN KE SAGEMAKER
-# ==========================================
-echo -e "${blue}Testing Proxy to SageMaker Studio Lab...${clear}"
 
-# Meniru User-Agent Chrome agar tidak diblokir AWS WAF
-AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-
-# Ambil maksimal 5000 karakter dari HTML
-CONTENT=$(curl -sL --socks5h 157.245.155.242:$PRT \
-     -H "User-Agent: $AGENT" \
-     "https://studiolab.sagemaker.aws/" | head -c 5000)
-
-# Mengecek apakah terdapat kata kunci dari halaman asli
-if [[ "$CONTENT" == *"SageMaker Studio Lab"* ]] || [[ "$CONTENT" == *"Amazon"* ]]; then
-    echo -e "${green}Status: Proxy SUPPORT! (Berhasil menembus CloudFront)${clear}"
-    
-    # Ekstrak judul halaman (Title) sebagai bukti konfirmasi
-    TITLE=$(echo "$CONTENT" | grep -oP '(?<=<title>).*?(?=</title>)' | head -n 1)
-    echo -e "${green}Web Title: $TITLE${clear}"
-else
-    echo -e "${red}Status: Proxy NOT SUPPORT (Terdeteksi Error 403 atau IP Diblokir AWS)${clear}"
-    # Menampilkan sedikit potongan error untuk debugging jika gagal
-    ERROR_SNIPPET=$(echo "$CONTENT" | head -n 1 | cut -c 1-60)
-    echo -e "${yellow}Preview: $ERROR_SNIPPET...${clear}"
-fi
-echo
